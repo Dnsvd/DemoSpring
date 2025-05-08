@@ -22,6 +22,20 @@ public class UserController {
     @PostMapping
         public User create(@RequestBody User user) {
         return userService.create(user);
-
+//        if (!userService.isEmailUnique(user.getEmail())) {
+//            throw new IllegalArgumentException("Email address already in use");
+//        }
+//        return user;
+    }
+    @DeleteMapping(path = "{id}")
+    public void delete(@PathVariable(name = "id") long id) {
+        userService.delete(id);
+    }
+    @PutMapping(path = "{id}")
+    public void update(
+            @PathVariable long id,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String name) {
+        userService.update(id, email, name);
     }
 }

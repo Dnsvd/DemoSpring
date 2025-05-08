@@ -13,7 +13,6 @@ public class User {
     private long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "email")
     private String email;
     private LocalDate birthday;
     private Integer age;

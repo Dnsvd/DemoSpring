@@ -9,10 +9,10 @@ import java.util.Date;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-
+//    boolean existsByEmail(String email);
     //1 вариант SQL запроса
-    @Query(value = "select * from user where lower(email) = lower(:email)", nativeQuery = true)
-    Optional<User> findByUserEmail(@Param(value = "email") String email);
+    @Query(value = "select * from users where email= :email", nativeQuery = true)
+    Optional<User> findByUserEmail(String email);
     // 2 вариант SQL запроса
 //    @Query(value = "select u from User u where u.email = :email")
 //    User findByEmail(@Param(value = "email") String email);
